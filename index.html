@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="新竹縣原生植物保育協會：守護原生植物，讓自然在新竹扎根。"
+    />
+    <title>新竹縣原生植物保育協會</title>
+    <style>
+      :root {
+        --forest: #174b38;
+        --forest-dark: #103426;
+        --leaf: #4f8b59;
+        --leaf-light: #b9d9a4;
+        --paper: #f8f6ee;
+        --sand: #e9e2ce;
+        --ink: #243129;
+        --muted: #5e6b61;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: "Noto Serif TC", "PingFang TC", "Microsoft JhengHei", serif;
+        line-height: 1.7;
+      }
+
+      .site-header {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.15rem clamp(1.25rem, 6vw, 6rem);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+      }
+
+      .brand { display: flex; align-items: center; gap: .75rem; font-weight: 700; letter-spacing: .07em; }
+      a.brand { color: inherit; text-decoration: none; }
+      .brand-mark {
+        display: grid; place-items: center; width: 2.5rem; height: 2.5rem;
+        border: 1px solid rgba(255,255,255,.7); border-radius: 50%; font-size: 1.25rem;
+      }
+      nav { display: flex; gap: clamp(.75rem, 2.5vw, 2.2rem); font-size: .95rem; }
+      nav a { color: inherit; text-decoration: none; }
+      nav a:hover { color: var(--leaf-light); }
+
+      .hero {
+        min-height: 680px;
+        padding: 9.5rem clamp(1.25rem, 12vw, 12rem) 5rem;
+        position: relative;
+        overflow: hidden;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        background:
+          linear-gradient(105deg, rgba(8, 43, 29, .96) 0%, rgba(20, 77, 54, .88) 48%, rgba(20, 77, 54, .55) 100%),
+          url("./花果紀錄/LINE_ALBUM_1110417解説-開花植物_240918_15.jpg") center / cover,
+          #1e6345;
+      }
+      .hero::before, .hero::after {
+        content: ""; position: absolute; border-radius: 50%; opacity: .36; pointer-events: none;
+      }
+      .hero::before { width: 37rem; height: 37rem; right: -7rem; bottom: -20rem; border: 2px solid #d6e7ae; }
+      .hero::after { width: 20rem; height: 20rem; right: 11%; top: 9rem; border: 34px solid rgba(202, 227, 171, .22); }
+      .hero-content { max-width: 47rem; position: relative; z-index: 1; }
+      .eyebrow { margin: 0 0 1rem; color: #d9e8bb; font-family: sans-serif; font-size: .78rem; letter-spacing: .2em; }
+      h1 { margin: 0; max-width: 13ch; font-size: clamp(2.55rem, 6.4vw, 5.6rem); line-height: 1.18; letter-spacing: .08em; }
+      .hero-copy { max-width: 34rem; margin: 1.8rem 0 2.2rem; font-size: clamp(1rem, 1.45vw, 1.22rem); color: #eef5e3; }
+      .button {
+        display: inline-block; padding: .8rem 1.55rem; color: var(--forest-dark); background: #d7e8b5;
+        border: 1px solid #d7e8b5; text-decoration: none; font-family: sans-serif; font-size: .9rem; font-weight: 700; letter-spacing: .08em;
+        transition: .2s ease;
+      }
+      .button:hover { transform: translateY(-2px); background: #fff; }
+      .sprout { position: absolute; right: clamp(1rem, 9vw, 10rem); bottom: 2.4rem; width: 15rem; height: 15rem; opacity: .82; }
+      .sprout i { position: absolute; display: block; background: #a8cf82; border-radius: 100% 0 100% 0; transform-origin: bottom left; }
+      .sprout i:nth-child(1) { width: 5rem; height: 9rem; bottom: 6rem; left: 6rem; transform: rotate(-43deg); }
+      .sprout i:nth-child(2) { width: 5rem; height: 8rem; bottom: 5rem; left: 9rem; transform: scaleX(-1) rotate(-45deg); background: #72a86b; }
+      .sprout i:nth-child(3) { width: .4rem; height: 11rem; bottom: 0; left: 9rem; background: #bcd898; border-radius: 2rem; transform: rotate(-6deg); }
+
+      .intro { max-width: 1100px; margin: 0 auto; padding: 6rem clamp(1.25rem, 5vw, 3rem); display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem, 8vw, 8rem); align-items: center; }
+      .section-kicker { margin: 0 0 .8rem; color: var(--leaf); font-family: sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .17em; }
+      h2 { margin: 0; color: var(--forest); font-size: clamp(1.85rem, 3.4vw, 3rem); line-height: 1.34; letter-spacing: .04em; }
+      .intro p { margin: 0; font-size: 1.08rem; color: #3f4c42; }
+
+      .programs { background: #e8efe0; padding: 5.5rem clamp(1.25rem, 5vw, 3rem) 6.4rem; }
+      .programs-inner { max-width: 1100px; margin: 0 auto; }
+      .programs-header { display: flex; gap: 2rem; align-items: end; justify-content: space-between; margin-bottom: 2.25rem; }
+      .programs-header p { max-width: 26rem; margin: 0; color: var(--muted); }
+      .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+      .card { min-height: 245px; padding: 1.8rem; display: flex; flex-direction: column; justify-content: flex-end; color: #fff; background: var(--forest); }
+      .card:nth-child(2) { background: #4c7d52; }
+      .card:nth-child(3) { background: #8ca86d; }
+      .card-icon { margin-bottom: auto; font-family: sans-serif; font-size: 2rem; opacity: .92; }
+      .card h3 { margin: 1rem 0 .35rem; font-size: 1.35rem; letter-spacing: .05em; }
+      .card p { margin: 0; font-size: .95rem; color: rgba(255,255,255,.88); }
+
+      .news { max-width: 1100px; margin: 0 auto; padding: 6rem clamp(1.25rem, 5vw, 3rem); }
+      .news-list { margin-top: 2rem; border-top: 1px solid #c9d1c3; }
+      .news-item { display: grid; grid-template-columns: 7rem 1fr auto; align-items: center; gap: 1.4rem; padding: 1.45rem 0; border-bottom: 1px solid #c9d1c3; }
+      .news-date { color: var(--leaf); font-family: sans-serif; font-size: .84rem; font-weight: 700; letter-spacing: .08em; }
+      .news-item h3 { margin: 0; font-size: 1.16rem; letter-spacing: .03em; }
+      .tag { padding: .28rem .55rem; color: var(--forest); border: 1px solid #9db396; font-family: sans-serif; font-size: .72rem; }
+
+      .stories { background: #f1eee3; padding: 5.8rem clamp(1.25rem, 5vw, 3rem); }
+      .stories-inner { max-width: 1100px; margin: 0 auto; }
+      .story-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 1.25rem; margin-top: 2rem; }
+      .story { min-height: 20rem; position: relative; overflow: hidden; background: #2f543e; }
+      .story img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s ease; }
+      .story:hover img { transform: scale(1.04); }
+      .story-label { position: absolute; left: 1.35rem; bottom: 1.2rem; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.6); }
+      .story-label small { display: block; margin-bottom: .15rem; font-family: sans-serif; letter-spacing: .12em; }
+      .story-label strong { font-size: 1.25rem; letter-spacing: .05em; }
+      .photo-gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 12rem; gap: .8rem; margin-top: .8rem; }
+      .photo-gallery figure { position: relative; margin: 0; overflow: hidden; background: #274b39; }
+      .photo-gallery figure:first-child { grid-column: span 2; grid-row: span 2; }
+      .photo-gallery figure:nth-child(4) { grid-column: span 2; }
+      .photo-gallery img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s ease; }
+      .photo-gallery figure:hover img { transform: scale(1.05); }
+      .photo-gallery figcaption { position: absolute; right: .7rem; bottom: .55rem; padding: .2rem .45rem; color: #fff; background: rgba(14, 49, 32, .72); font-family: sans-serif; font-size: .68rem; letter-spacing: .08em; }
+
+      .donate { padding: 6rem clamp(1.25rem, 5vw, 3rem); color: #fff; background: var(--forest); }
+      .donate-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem, 8vw, 8rem); align-items: center; }
+      .donate h2 { color: #fff; }
+      .donate-copy { margin: 1.25rem 0 0; color: #dcead4; font-size: 1.08rem; }
+      .bank-card { padding: clamp(1.5rem, 4vw, 2.4rem); color: var(--ink); background: #f9f7ef; }
+      .bank-card h3 { margin: 0 0 1.5rem; color: var(--forest); font-size: 1.25rem; }
+      .bank-row { padding: .9rem 0; border-top: 1px solid #d9dfd2; }
+      .bank-row:first-of-type { border-top: 0; padding-top: 0; }
+      .bank-label { display: block; margin-bottom: .2rem; color: var(--muted); font-family: sans-serif; font-size: .76rem; font-weight: 700; letter-spacing: .11em; }
+      .bank-value { font-size: 1.05rem; font-weight: 700; letter-spacing: .03em; }
+      .bank-account { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: clamp(1.1rem, 2vw, 1.45rem); letter-spacing: .12em; }
+      .phone-link { color: var(--forest); text-decoration: none; }
+
+      .join { color: #fff; background: var(--forest-dark); padding: 5.5rem clamp(1.25rem, 5vw, 3rem); text-align: center; }
+      .join h2 { color: #fff; }
+      .join p { max-width: 38rem; margin: 1.2rem auto 2rem; color: #d9e5d7; }
+      footer { padding: 1.7rem clamp(1.25rem, 6vw, 6rem); display: flex; justify-content: space-between; gap: 1rem; color: #687267; background: #e9e4d5; font-family: sans-serif; font-size: .82rem; }
+
+      @media (max-width: 720px) {
+        nav { display: none; }
+        .hero { min-height: 620px; padding-top: 8rem; }
+        .sprout { right: -3.5rem; bottom: -.6rem; transform: scale(.8); }
+        .intro { grid-template-columns: 1fr; padding-block: 4.3rem; }
+        .programs-header { display: block; }
+        .programs-header p { margin-top: 1rem; }
+        .card-grid { grid-template-columns: 1fr; }
+        .card { min-height: 190px; }
+        .story-grid { grid-template-columns: 1fr; }
+        .story { min-height: 18rem; }
+        .photo-gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 9rem; }
+        .photo-gallery figure:first-child, .photo-gallery figure:nth-child(4) { grid-column: span 2; }
+        .donate-inner { grid-template-columns: 1fr; }
+        .news-item { grid-template-columns: 1fr auto; gap: .4rem 1rem; }
+        .news-date { grid-column: 1 / -1; }
+        footer { display: block; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="新竹縣原生植物保育協會首頁">
+        <span class="brand-mark">⌇</span><span>新竹縣原生植物保育協會</span>
+      </a>
+      <nav aria-label="主要選單">
+        <a href="#about">關於協會</a>
+        <a href="#action">保育行動</a>
+        <a href="#news">最新消息</a>
+        <a href="#donate">捐款支持</a>
+        <a href="#join">參與我們</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow">HSINCHU NATIVE PLANT CONSERVATION ASSOCIATION</p>
+          <h1 id="hero-title">讓台灣原生植物<br />在新竹扎根</h1>
+          <p class="hero-copy">從認識一株植物開始，守護台灣土地的生態記憶，讓人與自然在日常中重新相遇。</p>
+          <a class="button" href="#about">認識我們</a>
+        </div>
+        <div class="sprout" aria-hidden="true"><i></i><i></i><i></i></div>
+      </section>
+
+      <section class="intro" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="section-kicker">ABOUT US</p>
+          <h2 id="about-title">守護台灣原生植物，從新竹開始行動</h2>
+        </div>
+        <div>
+          <p>新竹縣原生植物保育協會與台灣原生植物保育協會秉持相同的保育宗旨，立足新竹，持續推動台灣原生植物保育、生態教育與環境關懷。</p>
+        </div>
+      </section>
+
+      <section class="programs" id="action" aria-labelledby="action-title">
+        <div class="programs-inner">
+          <div class="programs-header">
+            <div><p class="section-kicker">OUR ACTIONS</p><h2 id="action-title">把守護自然，化為日常行動</h2></div>
+            <p>以在地觀察、教育推廣和群眾參與，累積能持續傳承的保育力量。</p>
+          </div>
+          <div class="card-grid">
+            <article class="card"><span class="card-icon">✦</span><h3>原生植物保育</h3><p>認識、記錄與守護台灣珍貴的原生植物。</p></article>
+            <article class="card"><span class="card-icon">⌁</span><h3>生態教育推廣</h3><p>透過導覽、講座與課程，讓自然走進生活。</p></article>
+            <article class="card"><span class="card-icon">◌</span><h3>環境關懷行動</h3><p>串連社區與志工，一起回應土地的需求。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="news" id="news" aria-labelledby="news-title">
+        <p class="section-kicker">NEWS</p>
+        <h2 id="news-title">最新消息</h2>
+        <div class="news-list">
+          <article class="news-item"><time class="news-date" datetime="2026-08">籌備中</time><h3>協會網站第一版正式啟動</h3><span class="tag">協會公告</span></article>
+          <article class="news-item"><time class="news-date" datetime="2026-08">敬請期待</time><h3>在地生態教育與保育活動將陸續公布</h3><span class="tag">活動消息</span></article>
+          <article class="news-item"><time class="news-date" datetime="2026-08">招募中</time><h3>歡迎關心原生植物的朋友，一起參與守護行動</h3><span class="tag">志工招募</span></article>
+        </div>
+      </section>
+
+      <section class="stories" aria-labelledby="stories-title">
+        <div class="stories-inner">
+          <p class="section-kicker">IN THE FIELD</p>
+          <h2 id="stories-title">走進自然，也走進社群</h2>
+          <div class="story-grid">
+            <article class="story">
+              <img src="./活動照片/LINE_ALBUM_20231015百源解說活動_231016_12.jpg" alt="協會成員在樹下進行戶外解說活動" />
+              <div class="story-label"><small>FIELD WALK</small><strong>自然觀察與步道導覽</strong></div>
+            </article>
+            <article class="story">
+              <img src="./培訓照片/20BB91CA-C471-4E64-B185-97D6FF2B685B.jpg" alt="協會培訓課程進行中的情景" />
+              <div class="story-label"><small>LEARNING</small><strong>培訓與生態教育</strong></div>
+            </article>
+          </div>
+          <div class="photo-gallery" aria-label="協會活動與植物紀錄照片">
+            <figure><img src="./活動照片/LINE_ALBUM_獅山共學_231224_17.jpg" alt="獅山活動參與者在戶外合影" /><figcaption>自然共學</figcaption></figure>
+            <figure><img src="./活動照片/LINE_ALBUM_2026614百源導覧_260615_13.jpg" alt="參與者在草地中進行植物觀察" /><figcaption>植物觀察</figcaption></figure>
+            <figure><img src="./花果紀錄/LINE_ALBUM_1110417解説-開花植物_240918_1.jpg" alt="台灣原生植物花果紀錄" /><figcaption>花果紀錄</figcaption></figure>
+            <figure><img src="./活動照片/LINE_ALBUM_20231015百源解說活動_231016_1.jpg" alt="百源解說活動情景" /><figcaption>步道解說</figcaption></figure>
+            <figure><img src="./花果紀錄/LINE_ALBUM_2022百源植物花果全記錄_230624_13.jpg" alt="百源植物花果紀錄" /><figcaption>植物紀錄</figcaption></figure>
+            <figure><img src="./培訓照片/LINE_ALBUM_202407培訓課程_240802_10.jpg" alt="協會培訓課程活動" /><figcaption>生態培訓</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="donate" id="donate" aria-labelledby="donate-title">
+        <div class="donate-inner">
+          <div>
+            <p class="section-kicker">SUPPORT OUR WORK</p>
+            <h2 id="donate-title">邀請您支持<br />台灣原生植物保育</h2>
+            <p class="donate-copy">您的捐款將支持原生植物保育、生態教育推廣與在地環境關懷行動。誠摯邀請您與我們一起，守護台灣珍貴的自然生命。</p>
+          </div>
+          <div class="bank-card" aria-label="捐款匯款資訊">
+            <h3>銀行匯款資訊</h3>
+            <div class="bank-row"><span class="bank-label">戶名</span><span class="bank-value">社團法人新竹縣原生植物保育協會</span></div>
+            <div class="bank-row"><span class="bank-label">銀行</span><span class="bank-value">台北富邦銀行（總行代碼 012）</span></div>
+            <div class="bank-row"><span class="bank-label">帳號</span><span class="bank-value bank-account">8212 0000 1145 58</span></div>
+            <div class="bank-row"><span class="bank-label">捐款／聯繫電話</span><a class="bank-value phone-link" href="tel:+886983062342">0983-062-342</a></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="join" id="join" aria-labelledby="join-title">
+        <p class="section-kicker">GET INVOLVED</p>
+        <h2 id="join-title">一起讓台灣的綠意延續</h2>
+        <p>無論是參加活動、成為志工，或分享你所看見的植物故事，每一份投入都能讓保育向前一步。</p>
+        <a class="button" href="mailto:contact@example.org">聯絡我們</a>
+      </section>
+    </main>
+    <footer><span>© 新竹縣原生植物保育協會</span><span>網站建置中｜聯絡資訊將於後續補上</span></footer>
+  </body>
+</html>
