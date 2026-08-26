@@ -49,9 +49,9 @@
         display: grid; place-items: center; width: 2.5rem; height: 2.5rem;
         border: 1px solid rgba(255,255,255,.7); border-radius: 50%; font-size: 1.25rem;
       }
-      nav { display: flex; gap: clamp(.75rem, 2.5vw, 2.2rem); font-size: .95rem; }
-      nav a { color: inherit; text-decoration: none; }
-      nav a:hover { color: var(--leaf-light); }
+      nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .55rem; font-size: .85rem; }
+      nav a { padding: .45rem .7rem; color: inherit; border: 1px solid rgba(255,255,255,.55); text-decoration: none; }
+      nav a:hover { color: var(--forest-dark); background: var(--leaf-light); border-color: var(--leaf-light); }
 
       .hero {
         min-height: 680px;
@@ -97,6 +97,8 @@
       .about-intro-text p, .park-text p, .adoption-photo p { margin: 0 0 1rem; color: #3f4c42; }
       .about-intro-text p:last-child, .park-text p:last-child, .adoption-photo p:last-child { margin-bottom: 0; }
       .about-logo, .park-photo { min-height: 18rem; display: grid; place-items: center; background: var(--forest); }
+      .about-logo { background: transparent; }
+      .about-logo img { width: min(72%, 18rem); height: auto; display: block; }
       .photo-placeholder { width: 72%; min-height: 11rem; display: grid; place-items: center; color: var(--leaf-light); border: 1px solid rgba(215, 232, 181, .55); font-family: sans-serif; letter-spacing: .12em; }
       .photo-placeholder.large { width: 82%; min-height: 15rem; }
       .history { background: #e8efe0; }
@@ -108,10 +110,13 @@
       .timeline-content p { margin: 0; color: var(--muted); }
       .park { background: var(--paper); }
       .park-intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 7rem); align-items: center; }
+      .park-photo { overflow: hidden; }
+      .park-photo img { width: 100%; aspect-ratio: 4 / 3; height: auto; display: block; object-fit: cover; }
       .adoption { background: #f1eee3; }
       .adoption-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
       .adoption-photo { padding: 1.25rem; background: #fffdf6; border-top: 4px solid var(--leaf); }
       .adoption-photo .photo-placeholder { width: 100%; min-height: 9rem; margin-bottom: 1.25rem; background: var(--forest); }
+      .adoption-photo > img { width: 100%; aspect-ratio: 4 / 3; height: auto; display: block; margin-bottom: 1.25rem; object-fit: cover; }
       .adoption-photo h3 { margin-bottom: .35rem; font-size: 1.15rem; }
       .adoption-photo p { font-size: .95rem; }
       .adoption-list { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #c9d1c3; }
@@ -181,12 +186,15 @@
       footer { padding: 1.7rem clamp(1.25rem, 6vw, 6rem); display: flex; justify-content: space-between; gap: 1rem; color: #687267; background: #e9e4d5; font-family: sans-serif; font-size: .82rem; }
 
       @media (max-width: 720px) {
-        nav { display: none; }
-        .hero { min-height: 620px; padding-top: 8rem; }
+        .site-header { flex-wrap: wrap; }
+        nav { display: flex; width: 100%; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; margin-top: .8rem; padding-bottom: .25rem; }
+        nav a { flex: 0 0 auto; white-space: nowrap; }
+        .hero { min-height: 620px; padding-top: 11rem; }
         .sprout { right: -3.5rem; bottom: -.6rem; transform: scale(.8); }
         .about-section > div { padding-block: 4.3rem; }
         .about-intro, .park-intro { grid-template-columns: 1fr; gap: 2rem; }
         .about-logo, .park-photo { min-height: 14rem; }
+        .about-logo img { width: min(62%, 15rem); }
         .photo-placeholder.large { min-height: 11rem; }
         .timeline-item { grid-template-columns: 4.3rem 1fr; gap: 1rem; padding-left: 1.1rem; }
         .adoption-photo-grid { grid-template-columns: 1fr; }
@@ -213,11 +221,12 @@
         <span class="brand-mark">⌇</span><span>新竹縣原生植物保育協會</span>
       </a>
       <nav aria-label="主要選單">
-        <a href="#about">關於協會</a>
-        <a href="#action">保育行動</a>
+        <a href="#history">歷年大事記</a>
+        <a href="#park">國際環境教育園區</a>
+        <a href="#adoption">認養經營</a>
+        <a href="#basic-info">協會基本資料</a>
         <a href="#news">最新消息</a>
-        <a href="#donate">捐款支持</a>
-        <a href="#join">參與我們</a>
+        <a href="#donate">邀請您支持台灣原生植物保育</a>
       </nav>
     </header>
 
@@ -259,15 +268,13 @@
         </div>
 
         <div class="about-logo">
-            <div class="photo-placeholder">
-                協會 LOGO
-            </div>
+            <img src="LOGO.jpg" alt="新竹縣原生植物保育協會 LOGO" />
         </div>
 
     </div>
 
     <!-- 歷年大事記 -->
-    <div class="history">
+    <div class="history" id="history">
 
         <div class="section-title">
             <p class="section-subtitle">HISTORY</p>
@@ -348,7 +355,7 @@
 
 
     <!-- 國際環境教育園區 -->
-    <div class="park">
+    <div class="park" id="park">
 
         <div class="section-title">
             <p class="section-subtitle">ENVIRONMENTAL EDUCATION PARK</p>
@@ -379,9 +386,7 @@
             </div>
 
             <div class="park-photo">
-                <div class="photo-placeholder large">
-                    國際環境教育園區照片
-                </div>
+              <img src="園區照片.png" alt="國際環境教育園區內的樹木與戶外活動" />
             </div>
 
         </div>
@@ -389,7 +394,7 @@
 
 
     <!-- 認養經營 -->
-    <div class="adoption">
+    <div class="adoption" id="adoption">
 
         <div class="section-title">
             <p class="section-subtitle">ADOPTION &amp; EDUCATION</p>
@@ -402,25 +407,19 @@
         <div class="adoption-photo-grid">
 
             <div class="adoption-photo">
-                <div class="photo-placeholder">
-                    植栽養護照片
-                </div>
+              <img src="植栽養護照片.jpg" alt="志工在園區進行植栽養護" />
                 <h3>植栽養護</h3>
                 <p>植栽養護、澆水、環境清潔及定期施肥。</p>
             </div>
 
             <div class="adoption-photo">
-                <div class="photo-placeholder">
-                    志工培訓照片
-                </div>
+              <img src="志工培訓照片.jpg" alt="志工培訓活動現場" />
                 <h3>志工培訓</h3>
                 <p>每月第三個週六舉辦志工培訓課程。</p>
             </div>
 
             <div class="adoption-photo">
-                <div class="photo-placeholder">
-                    解說活動照片
-                </div>
+              <img src="解說活動照片.jpg" alt="園區生態解說活動現場" />
                 <h3>生態解說</h3>
                 <p>每月第三個週日舉辦園區解說活動。</p>
             </div>
@@ -439,7 +438,7 @@
 
 
     <!-- 協會基本資料 -->
-    <div class="basic-info">
+    <div class="basic-info" id="basic-info">
 
         <div class="section-title">
             <p class="section-subtitle">BASIC INFORMATION</p>
@@ -480,20 +479,6 @@
 </section>
 
 
-      <section class="programs" id="action" aria-labelledby="action-title">
-        <div class="programs-inner">
-          <div class="programs-header">
-            <div><p class="section-kicker">OUR ACTIONS</p><h2 id="action-title">把守護自然，化為日常行動</h2></div>
-            <p>以在地觀察、教育推廣和群眾參與，累積能持續傳承的保育力量。</p>
-          </div>
-          <div class="card-grid">
-            <article class="card"><span class="card-icon">✦</span><h3>原生植物保育</h3><p>認識、記錄與守護台灣珍貴的原生植物。</p></article>
-            <article class="card"><span class="card-icon">⌁</span><h3>生態教育推廣</h3><p>透過導覽、講座與課程，讓自然走進生活。</p></article>
-            <article class="card"><span class="card-icon">◌</span><h3>環境關懷行動</h3><p>串連社區與志工，一起回應土地的需求。</p></article>
-          </div>
-        </div>
-      </section>
-
       <section class="news" id="news" aria-labelledby="news-title">
         <p class="section-kicker">NEWS</p>
         <h2 id="news-title">最新消息</h2>
@@ -501,31 +486,6 @@
           <article class="news-item"><time class="news-date" datetime="2026-08">籌備中</time><h3>協會網站第一版正式啟動</h3><span class="tag">協會公告</span></article>
           <article class="news-item"><time class="news-date" datetime="2026-08">敬請期待</time><h3>在地生態教育與保育活動將陸續公布</h3><span class="tag">活動消息</span></article>
           <article class="news-item"><time class="news-date" datetime="2026-08">招募中</time><h3>歡迎關心原生植物的朋友，一起參與守護行動</h3><span class="tag">志工招募</span></article>
-        </div>
-      </section>
-
-      <section class="stories" aria-labelledby="stories-title">
-        <div class="stories-inner">
-          <p class="section-kicker">IN THE FIELD</p>
-          <h2 id="stories-title">走進自然，也走進社群</h2>
-          <div class="story-grid">
-            <article class="story">
-              <img src="LINE_ALBUM_獅山共學_231224_6.jpg" alt="協會成員在樹下進行戶外解說活動" />
-              <div class="story-label"><small>FIELD WALK</small><strong>自然觀察與步道導覽</strong></div>
-            </article>
-            <article class="story">
-              <img src="./培訓照片/20BB91CA-C471-4E64-B185-97D6FF2B685B.jpg" alt="協會培訓課程進行中的情景" />
-              <div class="story-label"><small>LEARNING</small><strong>培訓與生態教育</strong></div>
-            </article>
-          </div>
-          <div class="photo-gallery" aria-label="協會活動與植物紀錄照片">
-            <figure><img src="B066DBB1-857A-47A2-9BF8-9F70863B497D.jpg" alt="參與者在戶外合影" /><figcaption>步道解說</figcaption></figure>
-            <figure><img src="200CEFEF-BC11-42A2-94FC-400DCE6A1E51.jpg" alt="參與者在草地中進行植物觀察" /><figcaption>步道解說</figcaption></figure>
-            <figure><img src="LINE_ALBUM_2024721百源導覧_240802_13.jpg" alt="百源解說活動情景" /><figcaption>園區解說</figcaption></figure>
-            <figure><img src="LINE_ALBUM_20231015百源解說活動_231016_16.jpg" alt="園區解說" /><figcaption>園區解說</figcaption></figure>
-            <figure><img src="LINE_ALBUM_2022百源植物花果全記錄_230624_67.jpg" alt="百源植物花果紀錄" /><figcaption>植物紀錄</figcaption></figure>
-            <figure><img src="B622C6E9-CC7B-4C27-83EA-F2B773468E42.jpg" alt="協會培訓課程活動" /><figcaption>生態培訓</figcaption></figure>
-          </div>
         </div>
       </section>
 
