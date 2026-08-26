@@ -87,6 +87,40 @@
       .sprout i:nth-child(2) { width: 5rem; height: 8rem; bottom: 5rem; left: 9rem; transform: scaleX(-1) rotate(-45deg); background: #72a86b; }
       .sprout i:nth-child(3) { width: .4rem; height: 11rem; bottom: 0; left: 9rem; background: #bcd898; border-radius: 2rem; transform: rotate(-6deg); }
 
+      .about-section { background: var(--paper); }
+      .about-section > div { max-width: 1100px; margin: 0 auto; padding: 5.5rem clamp(1.25rem, 5vw, 3rem); }
+      .section-title { max-width: 44rem; margin-bottom: 2.5rem; }
+      .section-subtitle { margin: 0 0 .75rem; color: var(--leaf); font-family: sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .17em; }
+      .section-title > p:last-child { margin: 1rem 0 0; color: var(--muted); }
+      .about-intro { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2rem, 8vw, 7rem); align-items: center; background: #f1eee3; }
+      .about-intro-text h3, .park-text h3, .adoption-photo h3 { margin: 0 0 1rem; color: var(--forest); font-size: 1.45rem; }
+      .about-intro-text p, .park-text p, .adoption-photo p { margin: 0 0 1rem; color: #3f4c42; }
+      .about-intro-text p:last-child, .park-text p:last-child, .adoption-photo p:last-child { margin-bottom: 0; }
+      .about-logo, .park-photo { min-height: 18rem; display: grid; place-items: center; background: var(--forest); }
+      .photo-placeholder { width: 72%; min-height: 11rem; display: grid; place-items: center; color: var(--leaf-light); border: 1px solid rgba(215, 232, 181, .55); font-family: sans-serif; letter-spacing: .12em; }
+      .photo-placeholder.large { width: 82%; min-height: 15rem; }
+      .history { background: #e8efe0; }
+      .timeline { border-left: 1px solid #9db396; }
+      .timeline-item { display: grid; grid-template-columns: 6rem 1fr; gap: 1.5rem; padding: 0 0 1.6rem 1.5rem; position: relative; }
+      .timeline-item::before { content: ""; position: absolute; left: -.3rem; top: .35rem; width: .55rem; height: .55rem; background: var(--leaf); border: 3px solid #e8efe0; border-radius: 50%; }
+      .timeline-year { color: var(--leaf); font-family: sans-serif; font-weight: 700; letter-spacing: .08em; }
+      .timeline-content h3 { margin: 0 0 .25rem; color: var(--forest); font-size: 1.12rem; }
+      .timeline-content p { margin: 0; color: var(--muted); }
+      .park { background: var(--paper); }
+      .park-intro { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 8vw, 7rem); align-items: center; }
+      .adoption { background: #f1eee3; }
+      .adoption-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+      .adoption-photo { padding: 1.25rem; background: #fffdf6; border-top: 4px solid var(--leaf); }
+      .adoption-photo .photo-placeholder { width: 100%; min-height: 9rem; margin-bottom: 1.25rem; background: var(--forest); }
+      .adoption-photo h3 { margin-bottom: .35rem; font-size: 1.15rem; }
+      .adoption-photo p { font-size: .95rem; }
+      .adoption-list { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #c9d1c3; }
+      .adoption-list p { margin: .45rem 0; color: var(--muted); }
+      .basic-info { background: #e8efe0; }
+      .info-box { max-width: 44rem; padding: 1.5rem 2rem; background: #fffdf6; border-left: 4px solid var(--leaf); }
+      .info-box p { margin: .65rem 0; color: var(--muted); }
+      .info-box strong { color: var(--forest); }
+
       .intro { max-width: 1100px; margin: 0 auto; padding: 6rem clamp(1.25rem, 5vw, 3rem); display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem, 8vw, 8rem); align-items: center; }
       .section-kicker { margin: 0 0 .8rem; color: var(--leaf); font-family: sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .17em; }
       h2 { margin: 0; color: var(--forest); font-size: clamp(1.85rem, 3.4vw, 3rem); line-height: 1.34; letter-spacing: .04em; }
@@ -150,6 +184,13 @@
         nav { display: none; }
         .hero { min-height: 620px; padding-top: 8rem; }
         .sprout { right: -3.5rem; bottom: -.6rem; transform: scale(.8); }
+        .about-section > div { padding-block: 4.3rem; }
+        .about-intro, .park-intro { grid-template-columns: 1fr; gap: 2rem; }
+        .about-logo, .park-photo { min-height: 14rem; }
+        .photo-placeholder.large { min-height: 11rem; }
+        .timeline-item { grid-template-columns: 4.3rem 1fr; gap: 1rem; padding-left: 1.1rem; }
+        .adoption-photo-grid { grid-template-columns: 1fr; }
+        .info-box { padding: 1.25rem 1.1rem; }
         .intro { grid-template-columns: 1fr; padding-block: 4.3rem; }
         .programs-header { display: block; }
         .programs-header p { margin-top: 1rem; }
@@ -191,15 +232,253 @@
         <div class="sprout" aria-hidden="true"><i></i><i></i><i></i></div>
       </section>
 
-      <section class="intro" id="about" aria-labelledby="about-title">
-        <div>
-          <p class="section-kicker">ABOUT US</p>
-          <h2 id="about-title">守護台灣原生植物，從新竹開始行動</h2>
+     <section class="about-section" id="about" aria-labelledby="about-title">
+
+    <div class="section-title">
+        <p class="section-subtitle">ABOUT US</p>
+        <h2 id="about-title">關於我們</h2>
+        <p>認識台灣原生植物，守護自然環境，讓生態保育從每一個人的行動開始。</p>
+    </div>
+
+    <!-- 協會簡介 -->
+    <div class="about-intro">
+
+        <div class="about-intro-text">
+            <h3>新竹縣原生植物保育協會</h3>
+
+            <p>
+                新竹縣原生植物保育協會致力於台灣原生植物的認識、
+                推廣、調查、研究與保育，並透過生態教育與志工培訓，
+                引導民眾認識自然、欣賞自然，共同守護台灣珍貴的原生植物。
+            </p>
+
+            <p>
+                協會也積極推動生態校園、環境教育、戶外解說及原生植物
+                生態課程，讓原生植物保育的觀念能夠向下一代扎根。
+            </p>
         </div>
-        <div>
-          <p>新竹縣原生植物保育協會與台灣原生植物保育協會秉持相同的保育宗旨，立足新竹，持續推動台灣原生植物保育、生態教育與環境關懷。</p>
+
+        <div class="about-logo">
+            <div class="photo-placeholder">
+                協會 LOGO
+            </div>
         </div>
-      </section>
+
+    </div>
+
+    <!-- 歷年大事記 -->
+    <div class="history">
+
+        <div class="section-title">
+            <p class="section-subtitle">HISTORY</p>
+            <h2>歷年大事記</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-year">2017</div>
+                <div class="timeline-content">
+                    <h3>第一屆新竹志工培訓</h3>
+                    <p>台灣原生植物保育協會新竹志工培訓第一屆。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2018</div>
+                <div class="timeline-content">
+                    <h3>國際環境教育園區</h3>
+                    <p>
+                        在新竹縣竹北空品區推動國際環境教育園區，
+                        遍植台灣原生植物。
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-content">
+                    <h3>每月解說活動開始</h3>
+                    <p>國際環境教育園區開始定期舉辦每月解說活動。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-content">
+                    <h3>新竹縣原生植物保育協會成立</h3>
+                    <p>
+                        新竹縣原生植物保育協會成立，
+                        接續認養國際環境教育園區。
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h3>承辦園區解說活動</h3>
+                    <p>
+                        接手承辦國際環境教育園區每月解說活動。
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-content">
+                    <h3>獲環境部績優認養單位頒獎</h3>
+                    <p>獲得環境部績優認養單位肯定。</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-content">
+                    <h3>第八屆志工培訓</h3>
+                    <p>
+                        持續培訓志工，並開始探索戶外解說，
+                        每年規劃四次戶外活動。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 國際環境教育園區 -->
+    <div class="park">
+
+        <div class="section-title">
+            <p class="section-subtitle">ENVIRONMENTAL EDUCATION PARK</p>
+            <h2>國際環境教育園區</h2>
+        </div>
+
+        <div class="park-intro">
+
+            <div class="park-text">
+
+                <h3>竹北空品區</h3>
+
+                <p>
+                    國際環境教育園區位於竹北市縣政二路與文忠路交叉口，
+                    婦幼館右後方。
+                </p>
+
+                <p>
+                    2018 年在新竹縣環保局指導下，
+                    台灣原生植物保育協會規劃了 10 個植物區。
+                </p>
+
+                <p>
+                    當年在附近文化里、興安里、竹北里居民及貴賓見證下，
+                    下種將近 1 萬棵台灣原生植物。
+                </p>
+
+            </div>
+
+            <div class="park-photo">
+                <div class="photo-placeholder large">
+                    國際環境教育園區照片
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 認養經營 -->
+    <div class="adoption">
+
+        <div class="section-title">
+            <p class="section-subtitle">ADOPTION &amp; EDUCATION</p>
+            <h2>認養經營</h2>
+            <p>
+                透過志工參與與環境教育，持續守護國際環境教育園區。
+            </p>
+        </div>
+
+        <div class="adoption-photo-grid">
+
+            <div class="adoption-photo">
+                <div class="photo-placeholder">
+                    植栽養護照片
+                </div>
+                <h3>植栽養護</h3>
+                <p>植栽養護、澆水、環境清潔及定期施肥。</p>
+            </div>
+
+            <div class="adoption-photo">
+                <div class="photo-placeholder">
+                    志工培訓照片
+                </div>
+                <h3>志工培訓</h3>
+                <p>每月第三個週六舉辦志工培訓課程。</p>
+            </div>
+
+            <div class="adoption-photo">
+                <div class="photo-placeholder">
+                    解說活動照片
+                </div>
+                <h3>生態解說</h3>
+                <p>每月第三個週日舉辦園區解說活動。</p>
+            </div>
+
+        </div>
+
+        <div class="adoption-list">
+
+            <p>🌱 不定期配合教育研習、演講及戶外解說課程。</p>
+            <p>🌱 解說志工超過 10 位，目前進行第八屆志工培訓。</p>
+            <p>🌱 逐步推動原生植物生態教育與自然體驗。</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- 協會基本資料 -->
+    <div class="basic-info">
+
+        <div class="section-title">
+            <p class="section-subtitle">BASIC INFORMATION</p>
+            <h2>協會基本資料</h2>
+        </div>
+
+        <div class="info-box">
+
+            <p>
+                <strong>團體名稱：</strong>
+                新竹縣原生植物保育協會
+            </p>
+
+            <p>
+                <strong>成立日期：</strong>
+                中華民國 112 年 06 月 04 日
+            </p>
+
+            <p>
+                <strong>會址：</strong>
+                新竹縣竹北市莊敬六街 248 號
+            </p>
+
+            <p>
+                <strong>立案文號：</strong>
+                府社行字第 112029 號
+            </p>
+
+            <p>
+                <strong>發證機關：</strong>
+                新竹縣政府
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
 
       <section class="programs" id="action" aria-labelledby="action-title">
         <div class="programs-inner">
